@@ -1,0 +1,31 @@
+<h1>Lista de productos</h1>
+<table class=" table">
+    <thead>
+        <tr>
+            <td> imagen</td>
+            <td>Nombre </td>
+            <td>Descripcion</td>
+            <td>talle</td>
+            <td>precio</td>
+            <td>stock</td>
+            <td>comprar</td>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let clothes of clothes" [ngClass]="{'clearance': clothes.clearance}">
+            <td> <img  [src] = "clothes.image "[alt] ="clothes.nombre " width="100 " /></td>
+         
+            <td>{{clothes.nombre}} </td>
+            <td>{{clothes.descripcion}}</td>
+            <td>{{clothes.talle}}</td>
+            <td>{{clothes.precio | currency}}</td>
+            <td><span class="badge bg-warning text-dark" *ngIf="clothes.stock==0"  >Sin stock </span></td>
+            
+            <td><app-input-number [(quantity)]="clothes.quantity"  [max]="clothes.stock" *ngIf=" clothes.stock"></app-input-number></td>
+            <button class="btn " (click)="addToCart(clothes)">Comprar</button>
+            </tr>
+       
+    </tbody>
+
+</table>
