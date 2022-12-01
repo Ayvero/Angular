@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { clothes } from './clothes-list/clothes';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,7 @@ export class clothesCartService {
   constructor(){}
   
     addToCart(clothes:clothes) {
-       let item : clothes =this._cartList.find( (v1)=> v1.nombre == clothes.nombre);
+       let item =this._cartList.find( (v1)=> v1.nombre == clothes.nombre);
       if(!item){
         this._cartList.push({...clothes});
 

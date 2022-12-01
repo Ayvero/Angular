@@ -3,18 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ClothesListComponent } from './clothes-list/clothes-list.component';
+import { clothesListComponent } from './clothes-list/clothes-list.component';
 import { FormsModule } from '@angular/forms';
 import { ClothesAboutComponent } from './clothes-about/clothes-about.component';
 import { ClothesSalesComponent } from './clothes-sales/clothes-sales.component';
 import { ClothesCartComponent } from './clothes-cart/clothes-cart.component';
-import { InputNumberComponent } from './input-number/input-number.component'
+import { InputNumberComponent } from './input-number/input-number.component';
+import{HttpClientModule} from'@angular/common/http'
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClothesListComponent,
+    clothesListComponent,
     ClothesAboutComponent,
     ClothesSalesComponent,
     ClothesCartComponent,
@@ -23,7 +24,8 @@ import { InputNumberComponent } from './input-number/input-number.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

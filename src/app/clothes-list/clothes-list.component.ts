@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { clothesCartService} from '../clothes-cart.service';
+import { ClothesDataService } from '../clothes-data.service';
 import { clothes } from './clothes';
 
 @Component({
@@ -9,13 +10,21 @@ import { clothes } from './clothes';
 })
 
 
+
+
 export class clothesListComponent {
 
   clothes: clothes []=[];
  
- constructor(private cart: (clothesCartService)){
+ constructor(private cart: clothesCartService,
+  private clothesDataService: ClothesDataService){
 
  }
+
+ ngOnInit():void{
+  this.clothesDataService.getAll()
+    .subscribe(clothes => this.clothes=clothes);
+}
  
   addToCart (clothes: clothes) : void{
 
@@ -35,47 +44,13 @@ export class clothesListComponent {
   alert(m);
  }
 
- clothes : clothes[] = [
-  {
-    image: 'assets/vestidoazul.jpeg',
-    nombre: 'Vestido',
-    descripcion: 'vestido de fiesta corto',
-    talle: 'small',
-    precio: 20000,
-    stock: 5,
-    clearance: false,
-    quantity:0,
-  
-  },
-  {
-    image: 'assets/vestidoazul.jpeg',
-    nombre: 'Vestido',
-    descripcion: 'vestido de fiesta largo',
-    talle: 'medium',
-    precio: 15000,
-    stock: 0,
-    clearance: false,
-    quantity:0,
-    
-  },
-    {
-      image: 'assets/vestidoazul.jpeg',
-      nombre: 'Vestido',
-      descripcion: 'vestido de noche largo',
-      talle: 'xlarge',
-      precio: 10000,
-      stock: 7,
-      clearance: true,
-      quantity:0,
-      
-    
-    },
-  
-];
-  
-
-
+ 
 }
+
+ 
+
+  
+
 
 
 
